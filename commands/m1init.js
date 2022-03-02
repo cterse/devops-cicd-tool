@@ -6,7 +6,7 @@ const PropertiesReader = require('properties-reader');
 const prop = PropertiesReader(path.resolve(path.join(__dirname, '..', 'config', 'app.properties')));
 
 const CONTAINER_NAME = prop.get('container.name');
-const CONTAINER_IMAGE = prop.get('image.name');
+const CONTAINER_IMAGE = prop.get('m1.image.name');
 const ID_KEY_PATH = prop.get('ssh.identityfile');
 
 exports.m1init = async () => {

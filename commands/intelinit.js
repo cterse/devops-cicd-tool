@@ -11,7 +11,7 @@ const CONTAINER_IMAGE = prop.get('intel.image.name');
 const CONTAINER_REGISTRY = prop.get('intel.image.registry');
 const ID_KEY_PATH = prop.get('ssh.identityfile');
 
-exports.m1init = async () => {
+exports.intelinit = async () => {
 
     console.log(chalk.green("Preparing computing environment..."));
 
