@@ -30,6 +30,9 @@ exports.m1init = async () => {
 
     shellExecSync(`vm ssh-config ${CONTAINER_NAME}`);
 
-    console.log(chalk.green(`Identity File: ${ID_KEY_PATH}`));
+    console.log(chalk.green(`Identity File: ${ID_KEY_PATH}\n`));
     
+    console.log(chalk.green(`Shared dirs:`));
+    console.log(chalk.green(`.:~/shared/cwd`));
+    console.log(chalk.green(`~:~/shared/home`));
 };
