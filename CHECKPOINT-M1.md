@@ -35,7 +35,7 @@ We will be working on “build” job tasks. The few remaining tasks are added o
 - [M1] Build script to configure the environment
 - [Intel] Build script to configure the environment
 
-
+## Issues faced
 
 ## Project Board Snapshot
 
@@ -45,7 +45,7 @@ More issues will be added as we proceed with our project.
 
 <img width="1128" alt="image" src="https://media.github.ncsu.edu/user/21059/files/e056e7cc-36b5-4f14-b75b-390d34272d99">
 
-## Issues faced
+
 
 
 
