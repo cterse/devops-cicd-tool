@@ -15,7 +15,7 @@ exports.m1init = async () => {
     console.log(chalk.green("Preparing computing environment..."));
 
     // Start container, stop if container with same name is already up.
-    console.log(chalk.green(`Starting ubuntu:focal instance with name: ${CONTAINER_NAME}`));
+    console.log(chalk.green(`Starting ${CONTAINER_IMAGE} instance with name: ${CONTAINER_NAME}`));
 
   
     if (process.env.INIT_PULL_IMAGE === 'true') {

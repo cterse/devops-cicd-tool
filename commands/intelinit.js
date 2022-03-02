@@ -16,7 +16,7 @@ exports.intelinit = async () => {
     console.log(chalk.green("Preparing computing environment..."));
 
     // Start container, stop if container with same name is already up.
-    console.log(chalk.green(`Starting ubuntu:focal instance with name: ${CONTAINER_NAME}`));
+    console.log(chalk.green(`Starting ${CONTAINER_IMAGE} instance with name: ${CONTAINER_NAME}`));
 
     if (prop.get('init.pull_image')) {
         shellExecSync(`bakerx pull ${CONTAINER_IMAGE} ${CONTAINER_REGISTRY}`);
