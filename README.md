@@ -1,6 +1,11 @@
 # Team 30 Devops Project
 
-Format of .env file
+## Team Members
+- Himanshu Gupta (hgupta6)
+- Chinmay Terse (cterse)
+- FNU Jayaty (jjayaty)
+
+## .env File Structure
 
 ```
 # pipeline init properties
