@@ -39,6 +39,9 @@ We will be working on the “build” job tasks. Some tasks have been added on t
 While working in the initial phase of our project we didn't face much issues. Few of the issues we faced are mentioned below:
 
 - While working on the project we realized that we need a SSH key from git as we are using the Enterprise version of the git. So we have to figure a way to setup NCSU GitHub with SSH in VM.
+- Correctly passing a command to the `vm exec` command from the Node.js app. We have to be careful about the use of quotes and escape any special characters that can be interpreted by the shell. 
+- Handling code for different architectures as well as different operating systems. It is still a work in progress and we need to find a Windows machine that will test our code. 
+- Determining how basicvm works. Like the location of the key and the seed and the functionality of setting up shared dirs. It would help if we have access to the basicvm code or have better documentation. 
 
 ## Project Board Snapshot
 
