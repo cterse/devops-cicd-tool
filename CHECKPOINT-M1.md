@@ -28,12 +28,24 @@ The tasks which are in progress now are stated in the [Project Board](https://gi
 - Create YAML build file
 
 ## Remaining Tasks 
+We have completed the “init” part of the project.
+We will be working on “build” job tasks. The few remaining tasks are added on the project board. We will be adding more tasks as we progress.
+
+- Read YAML file and install requirements
+- [M1] Build script to configure the environment
+- [Intel] Build script to configure the environment
 
 
 
 ## Project Board Snapshot
 
+Below are the snapshots of our project board, containg the list of issues. There are three categories of issues, namely Completed, To-Do and InProgress.
+More issues will be added as we proceed with our project.
+![image](https://media.github.ncsu.edu/user/21059/files/da228e95-e4be-4112-acdf-bed517e933ec)
 
+<img width="1128" alt="image" src="https://media.github.ncsu.edu/user/21059/files/e056e7cc-36b5-4f14-b75b-390d34272d99">
+
+## Issues faced
 
 
 
