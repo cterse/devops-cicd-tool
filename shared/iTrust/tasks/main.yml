@@ -4,10 +4,11 @@
   tags: 
     - clone
   git:
-  repo: https://{{ usertoken }}@github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git
-  dest: /home/ubuntu/iTrust
-  clone: true
-  update: false
+    repo: https://{{ usertoken }}@github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git
+    dest: /home/ubuntu/iTrust
+    clone: true
+    update: false
+    
 - name: "Fix Spring Application context properties"
   tags: 
     - fix
