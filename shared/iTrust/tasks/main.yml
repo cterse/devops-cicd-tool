@@ -27,6 +27,10 @@
 - name: "Run tests"
   tags: 
     - test
+  register: test_output
   shell:
     cmd: 'mvn -U -B clean test'
     chdir: /home/ubuntu/iTrust/iTrust2/
+
+- debug:
+    var: test_output.stdout_lines
