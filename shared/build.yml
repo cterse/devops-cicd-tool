@@ -51,4 +51,12 @@
           update_cache: yes
         become: yes
 
+      - name: Git clone the Itrust repo
+        become: yes
+        git:
+          repo: https://{{ usertoken }}@github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git
+          dest: /home/ubuntu/iTrust
+          clone: no
+          update: yes
+
       - debug: var=output.stdout_lines
