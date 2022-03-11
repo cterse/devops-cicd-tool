@@ -26,7 +26,7 @@ exports.intelinit = async () => {
     }
 
     if (process.env.INIT_RESTART_CONTAINER === 'true') {
-        shellExecSync(`bakerx run ${CONTAINER_NAME} ${CONTAINER_IMAGE} -- sync`);
+        await child.spawnSync(`bakerx`, `run ${CONTAINER_NAME} ${CONTAINER_IMAGE} --sync --memory 4096 --up ${path.resolve(__dirname, '..')}/shared/setup.sh`.split(' '), {shell:true, stdio: 'inherit'} );
 
         console.log(chalk.green(`VM Started successfully...`));
     }
