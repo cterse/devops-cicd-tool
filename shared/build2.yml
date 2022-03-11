@@ -1,7 +1,9 @@
 ---
-- name: "pipeline build support"
+- name: "itrust build config"
   hosts: 127.0.0.1
   remote_user: ubuntu
+  tags: 
+    - itrust-build
 
   tasks:
     - name: "Install Java"
@@ -73,6 +75,18 @@
             cmd: yq -i '.spring.datasource.password = "{{ db_pass }}"' application.yml
             chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/
 
+- name: "other build config"
+  hosts: 127.0.0.1
+  remote_user: ubuntu
+  tags: 
+    - other-build
+
+  tasks:
+    - name: "Install Steam Locomotive"
+      become: true
+      apt:
+        name: sl
+        update_cache: true
     # - name: "Run tests in iTrust"
     #   tags: 
     #     - test
