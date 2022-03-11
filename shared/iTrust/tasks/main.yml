@@ -8,7 +8,7 @@
     dest: /home/ubuntu/iTrust
     clone: true
     update: false
-    
+
 - name: "Fix Spring Application context properties"
   tags: 
     - fix
@@ -23,3 +23,10 @@
       shell:
         cmd: yq -i '.spring.datasource.password = "{{ db_pass }}"' application.yml
         chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/
+
+- name: "Run tests"
+  tags: 
+    - test
+  shell:
+    cmd: 'mvn -U -B clean test'
+    chdir: /home/ubuntu/iTrust/iTrust2/
