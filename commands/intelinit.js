@@ -1,16 +1,16 @@
 const chalk = require('chalk');
+const child  = require("child_process");
 const { shellExecSync } = require('../exec/utils');
 const path = require('path');
-const { sshcommand } = require('../exec/ssh')
+const { sshExec } = require('../exec/ssh')
 
 const PropertiesReader = require('properties-reader');
+//const { sshExec } = require('virtcrud/providers/util');
 const prop = PropertiesReader(path.resolve(path.join(__dirname, '..', 'config', 'app.properties')));
 
 const CONTAINER_NAME = prop.get('container.name');
 const CONTAINER_IMAGE = process.env.INTEL_VM_IMAGE_VERSION;
-// const CONTAINER_IMAGE = prop.get('intel.image.name');
-const CCONTAINER_REGISTRY = process.env.INTEL_VM_IMAGE_REGISTRY;
-// const CONTAINER_REGISTRY = prop.get('intel.image.registry');
+const CONTAINER_REGISTRY = process.env.INTEL_VM_IMAGE_REGISTRY;
 const ID_KEY_PATH = prop.get('ssh.identityfile');
 
 exports.intelinit = async () => {
@@ -26,13 +26,13 @@ exports.intelinit = async () => {
     }
 
     if (process.env.INIT_RESTART_CONTAINER === 'true') {
-        shellExecSync(`bakerx run ${CONTAINER_NAME} ${CONTAINER_IMAGE}`);
+        shellExecSync(`bakerx run ${CONTAINER_NAME} ${CONTAINER_IMAGE} -- sync`);
 
-        console.log(chalk.green(`Started successfully...`));
+        console.log(chalk.green(`VM Started successfully...`));
     }
-
-    shellExecSync(`bakerx ssh-info ${CONTAINER_NAME}`);
-
+    let config = shellExecSync(`bakerx ssh-info ${CONTAINER_NAME}`).toString();
+    console.log(chalk.green(config))
+    
     console.log(chalk.green(`Identity File: ${ID_KEY_PATH}`));
     
 };
