@@ -15,7 +15,7 @@ INIT_RESTART_CONTAINER=false    # restart container on pipeline init
 # Test app properties
 TESTAPP_URL=git@github.ncsu.edu:engr-csc326-staff/iTrust2-v10.git
 TESTAPP_URL_HTTPS=https://github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git
-NCSU_GITHUB_PERSONAL_TOKEN=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
+NCSU_GITHUB_PERSONAL_TOKEN=<NCSU-GITHUB-PERSONAL-TOKEN>
 
 # M1 props
 M1_VM_IMAGE_VERSION=ubuntu:jammy
