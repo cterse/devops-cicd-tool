@@ -1,6 +1,6 @@
 ---
 - name: "pipeline build support"
-  hosts: vm
+  hosts: 127.0.0.1
   remote_user: ubuntu
 
   tasks:
@@ -50,13 +50,17 @@
             name: yq
     
     - name: "Clone the iTrust repo"
+      tags: 
+        - clone
       git:
-        repo: "https://{{ usertoken }}@github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git"
+        repo: https://{{ usertoken }}@github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git
         dest: /home/ubuntu/iTrust
-        clone: false
-        update: true
+        clone: true
+        update: false
     
     - name: "Fix Spring Application context properties"
+      tags: 
+        - fix
       block:
         - name: "Rename application.yml.template -> application.yml"
           become: true
@@ -69,8 +73,16 @@
             cmd: yq -i '.spring.datasource.password = "{{ db_pass }}"' application.yml
             chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/
 
-    - name: "Run tests in iTrust"
-      become: true
-      shell:
-        cmd: 'mvn -U -B clean test'
-        chdir: /home/ubuntu/iTrust/iTrust2/
+    # - name: "Run tests in iTrust"
+    #   tags: 
+    #     - test
+    #   become: true
+    #   register: command_output
+    #   shell:
+    #     cmd: 'mvn -B clean test'
+    #     chdir: /home/ubuntu/iTrust/iTrust2/
+        
+    # - debug:
+    #     tags:
+    #       - debug
+    #     var: command_output.stdout_lines
