@@ -1,0 +1,76 @@
+---
+- name: "pipeline build support"
+  hosts: vm
+  remote_user: ubuntu
+
+  tasks:
+    - name: "Install Java"
+      become: true
+      apt:
+        name: openjdk-11-jdk
+        update_cache: true
+
+    - name: "Install Maven"
+      become: true
+      apt:
+        name: maven
+        update_cache: true
+    
+    - name: "Specify mysql-server password"
+      become: true
+      debconf:
+        name: mysql-server
+        question: mysql-server/root_password
+        value: root
+        vtype: password
+    
+    - name: "Reconfirm mysql-server password"
+      become: true
+      debconf:
+        name: mysql-server
+        question: mysql-server/root_password_again
+        value: root
+        vtype: password
+
+    - name: "Install mysql-server"
+      become: true
+      apt:
+        name: mysql-server
+
+    - name: "Install other dependencies"
+      block:
+        - name: "Install python3-mysqldb"
+          become: true
+          apt:
+            name: python3-mysqldb
+        
+        - name: "Install yq to modify yaml files"
+          become: true
+          community.general.snap:
+            name: yq
+    
+    - name: "Clone the iTrust repo"
+      git:
+        repo: "https://{{ usertoken }}@github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git"
+        dest: /home/ubuntu/iTrust
+        clone: false
+        update: true
+    
+    - name: "Fix Spring Application context properties"
+      block:
+        - name: "Rename application.yml.template -> application.yml"
+          become: true
+          shell:
+            cmd: 'mv application.yml.template application.yml'
+            chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/
+
+        - name: "Update the spring.datasource.password value"
+          shell:
+            cmd: yq -i '.spring.datasource.password = "{{ db_pass }}"' application.yml
+            chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/
+
+    - name: "Run tests in iTrust"
+      become: true
+      shell:
+        cmd: 'mvn -U -B clean test'
+        chdir: /home/ubuntu/iTrust/iTrust2/
