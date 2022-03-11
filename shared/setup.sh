@@ -5,7 +5,7 @@ set -x
 # exit when any command fails
 set -e
 
-apt-get update
-add-apt-repository ppa:ansible/ansible
-apt-get install ansible -y
+sudo apt-get update
+sudo add-apt-repository ppa:ansible/ansible
+sudo apt-get install ansible -y
 

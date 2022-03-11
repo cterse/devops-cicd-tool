@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const { shellExecSync } = require('../exec/utils');
+const { shellExecSync, vmSSHExecSync } = require('../exec/utils');
 const path = require('path');
 require('dotenv').config({path:path.join( path.dirname(require.main.filename), '.env')});
 
@@ -37,4 +37,6 @@ exports.m1init = async () => {
     console.log(chalk.green(`Shared dirs:`));
     console.log(chalk.green(`.:~/shared/cwd`));
     console.log(chalk.green(`~:~/shared/home`));
+
+    vmSSHExecSync(`sh /home/ubuntu/shared/cwd/shared/setup.sh`, CONTAINER_NAME);
 };
