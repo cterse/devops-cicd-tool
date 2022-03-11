@@ -1,2 +1,18 @@
 ---
 # tasks file for maven
+- name: "Install Maven"
+  become: true
+  apt:
+  name: maven
+  update_cache: true
+- name: "Install other dependencies"
+  block:
+    - name: "Install python3-mysqldb"
+      become: true
+      apt:
+        name: python3-mysqldb
+    
+    - name: "Install yq to modify yaml files"
+      become: true
+      community.general.snap:
+        name: yq

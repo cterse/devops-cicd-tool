@@ -1,2 +1,22 @@
 ---
 # tasks file for mysql-server
+- name: "Specify mysql-server password"
+  become: true
+  debconf:
+  name: mysql-server
+  question: mysql-server/root_password
+  value: root
+  vtype: password
+    
+- name: "Reconfirm mysql-server password"
+  become: true
+  debconf:
+  name: mysql-server
+  question: mysql-server/root_password_again
+  value: root
+  vtype: password
+
+- name: "Install mysql-server"
+  become: true
+  apt:
+  name: mysql-server

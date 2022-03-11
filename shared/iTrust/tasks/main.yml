@@ -1,2 +1,24 @@
 ---
 # tasks file for iTrust
+- name: "Clone the iTrust repo"
+  tags: 
+    - clone
+  git:
+  repo: https://{{ usertoken }}@github.ncsu.edu/engr-csc326-staff/iTrust2-v10.git
+  dest: /home/ubuntu/iTrust
+  clone: true
+  update: false
+- name: "Fix Spring Application context properties"
+  tags: 
+    - fix
+  block:
+    - name: "Rename application.yml.template -> application.yml"
+      become: true
+      shell:
+        cmd: 'mv application.yml.template application.yml'
+        chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/
+
+    - name: "Update the spring.datasource.password value"
+      shell:
+        cmd: yq -i '.spring.datasource.password = "{{ db_pass }}"' application.yml
+        chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/

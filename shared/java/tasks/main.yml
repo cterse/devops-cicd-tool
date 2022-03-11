@@ -1,2 +1,7 @@
 ---
 # tasks file for java
+- name: "Install Java"
+  become: true
+  apt:
+  name: openjdk-11-jdk
+  update_cache: true
