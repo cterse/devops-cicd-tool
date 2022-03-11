@@ -1,14 +1,10 @@
 setup:
   - maven
-  - mysql-password-set
+  - java
   - mysql-server
 
 jobs:
-  - name: build-iTrust
+  - name: itrust-build
     steps:
-      - name: iTrust clone
-        run: git-clone
-      - name: iTrust application.yml setup
-        run: applicationyml-setup
-      - name: iTrust run build
-        run: test-iTrust
+      - name: iTrust Jobs
+        run: iTrust
