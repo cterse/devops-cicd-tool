@@ -1,0 +1,54 @@
+---
+  - name: "Installing dependencies for iTrust"
+    hosts: localhost
+    connection: local 
+    tasks:
+      - name: "Check file and permission content"
+        shell: "ls -lrt"
+        register: "output"
+
+      - name: Install java
+        apt:
+          name: openjdk-11-jdk
+          state: present
+          update_cache: yes
+        become: yes
+
+      - name: Install Maven
+        apt:
+          name: maven
+          state: present
+          update_cache: yes
+        become: yes
+
+      - name: Specify MySQL root password before installing
+        debconf:
+          name: mysql-server
+          question: mysql-server/root_password
+          value: root
+          vtype: password
+        become: yes
+
+      - name: Confirm mysql root password 
+        debconf:
+          name: mysql-server
+          question: mysql-server/root_password_again
+          value: root
+          vtype: password
+        become: yes
+
+      - name: Install mySQL-server
+        apt:
+          name: mysql-server
+          state: present
+          update_cache: yes
+        become: yes
+
+      - name: Install other dependencies
+        apt:
+          name: python3-mysqldb
+          state: present
+          update_cache: yes
+        become: yes
+
+      - debug: var=output.stdout_lines
