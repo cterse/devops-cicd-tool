@@ -47,6 +47,11 @@ All the [Tasks and Issues](https://github.ncsu.edu/CSC-DevOps-S22/DEVOPS-30/issu
 
 ## Issues
 
+## Result Snapshot
+Below is the snapshot of our final result with all the test cases passed successfully.
+
+<img width="917" alt="Screen Shot 2022-03-11 at 9 13 32 PM" src="https://media.github.ncsu.edu/user/21059/files/81e6fa82-91d3-475d-bf89-8d0bed906680">
+
 
 ## Screencast
 Please refer to [Google Drive](https://drive.google.com/drive/folders/1veky1RZ7qmJp3X8gCbBitJR3gtkJYAb6) for the screencast video of Milestone 1.
