@@ -48,11 +48,15 @@ All the [Tasks and Issues](https://github.ncsu.edu/CSC-DevOps-S22/DEVOPS-30/issu
 ## Issues
 
 1. The Ubuntu focal image for M1 got corrupted due to some nightly updates, so we added a variable INIT_PULL_IMAGE  in the .env file to stop the image pull by setting its value as false. Also, to avoid running into this issue we started using Jammy image for our code.
+<img src='res/1.png' />
+<img src='res/1.2.png' />
 
 2. While running apt update in the VM, sometimes the following issue is encountered. This is potentially caused due to a mismatch in the BIOS time and the system time, between the host and the VM. To fix this issue we used the below commands in setup.sh before installing dependencies in the VM.
-  
-3. While executing the build command several times, we were getting an error as the iTrust repository had already been cloned in our VM. So, to overcome this error we modified our code in iTrust role as shown below.
+<img src='res/2.1.png' />
+<img src='res/2.2.png' />
 
+3. While executing the build command several times, we were getting an error as the iTrust repository had already been cloned in our VM. So, to overcome this error we modified our code in iTrust role as shown below.
+<img src='res/3.png' />
 
 ## Result Snapshot
 Below is the snapshot of our final result with all the test cases passed successfully.
