@@ -10,10 +10,10 @@ const CONTAINER_NAME = prop.get('container.name');
 const CONTAINER_IMAGE = process.env.INTEL_VM_IMAGE_VERSION;
 const CCONTAINER_REGISTRY = process.env.INTEL_VM_IMAGE_REGISTRY;
 const ID_KEY_PATH = prop.get('ssh.identityfile');
+const NCSU_GITHUB_USER_TOKEN = process.env.NCSU_GITHUB_PERSONAL_TOKEN
+const SPRING_DB_PASS = process.env.SPRING_DB_PASS
 
 exports.intelbuild = async () => {
-    let sshinfo = shellExecSync(`bakerx ssh-info ${CONTAINER_NAME}`);
-
     const myArray = sshinfo.split(" ");
     var config = {
         identifyFile: myArray[2].replaceAll('"',''),
@@ -22,5 +22,5 @@ exports.intelbuild = async () => {
         port: myArray[5]
     };
 
-    sshExec(`ansible-playbook /bakerx/shared/build.yml`, config);
+    sshExec(`ansible-playbook /bakerx/shared/build.yml -e \"usertoken=${NCSU_GITHUB_USER_TOKEN}\" -e \"db_pass=${SPRING_DB_PASS}\"` , config);
 };
