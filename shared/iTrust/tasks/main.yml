@@ -1,5 +1,10 @@
 ---
 # tasks file for iTrust
+- name: "Check if iTrust dir exists in ~"
+  stat:
+    path: /home/ubuntu/iTrust
+  register: dir_already_present
+
 - name: "Clone the iTrust repo"
   tags: 
     - clone
@@ -8,16 +13,22 @@
     dest: /home/ubuntu/iTrust
     clone: true
     update: false
+  when: not dir_already_present.stat.exists
 
 - name: "Fix Spring Application context properties"
   tags: 
     - fix
   block:
+    - name: "Check if application.yml already exists"
+      stat:
+        path: /home/ubuntu/iTrust/iTrust2/src/main/resources/application.yml
+      register: app_yml_already_present
     - name: "Rename application.yml.template -> application.yml"
       become: true
       shell:
         cmd: 'mv application.yml.template application.yml'
         chdir: /home/ubuntu/iTrust/iTrust2/src/main/resources/
+      when: not app_yml_already_present.stat.exists
 
     - name: "Update the spring.datasource.password value"
       shell:
