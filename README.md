@@ -25,3 +25,13 @@ SPRING_DB_PASS=root
 
 
 ```
+
+
+# Milestone 1 Report
+
+Steps to test Milestone 1:
+
+1. Set the variables in the .env file as shown above.
+2. Run the “pipeline init” command.
+3. Run the command “pipeline build itrust-build build.yml” 
+
