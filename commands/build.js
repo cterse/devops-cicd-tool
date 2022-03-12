@@ -20,7 +20,7 @@ exports.handler = async argv => {
     }
     else if(processor == 'Intel/Amd64')
     {
-        intelbuild.intelbuild();
+        intelbuild.intelbuild(argv);
     }
     else
     {
