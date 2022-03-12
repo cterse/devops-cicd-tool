@@ -43,6 +43,8 @@ Steps to test Milestone 1:
 
 The aim of this milestone is to make a Virtual machine and automate the installation of initial requirements such as JDK, Maven and SQL. We successfully achieved this target and automated the process of installation using Ansible. We used ansible roles to differentiate  between the different tasks and make our code more scalable. We can easily add new tasks such as installing pandas by adding a new role using ansible galaxy and updating the main.yml file in the tasks file of that particular role. The new role needs to be added in the build.yml file in order for it to execute.
 
+All the [Tasks and Issues](https://github.ncsu.edu/CSC-DevOps-S22/DEVOPS-30/issues?q=is%3Aissue+is%3Aclosed) for the [Project](https://github.ncsu.edu/CSC-DevOps-S22/DEVOPS-30/projects/1) which the team has worked on. 
+
 ## Issues
 
 
